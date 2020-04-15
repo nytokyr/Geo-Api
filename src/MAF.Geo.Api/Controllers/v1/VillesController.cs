@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace MAF.Geo.Api.Controllers.v1
 {
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/pays/{paysId}/[controller]")]
     [ApiController]
     public class VillesController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace MAF.Geo.Api.Controllers.v1
         }
 
         [HttpGet]
-        public ActionResult<List<VilleDto>> Get([FromQuery] string codePostal)
+        public ActionResult<List<VilleDto>> Search(int paysId, string codePostal, string codeInsee, string autoComplete)
         {
             var result = new List<VilleDto>()
             {

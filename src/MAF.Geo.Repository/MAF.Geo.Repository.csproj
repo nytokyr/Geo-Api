@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MAF.Geo.Domain.Model\MAF.Geo.Domain.Model.csproj" />
+    <ProjectReference Include="..\..\MAF.Geo.Domain.Service\MAF.Geo.Domain.Service.csproj" />
+    <ProjectReference Include="..\MAF.Geo.Domain.Model\MAF.Geo.Domain.Model.csproj" />
+    <ProjectReference Include="..\MAF.Geo.Domain.Service\MAF.Geo.Domain.Service.csproj" />
+  </ItemGroup>
+
+</Project>

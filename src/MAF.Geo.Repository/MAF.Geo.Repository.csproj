@@ -9,8 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MAF.Geo.Domain.Model\MAF.Geo.Domain.Model.csproj" />
-    <ProjectReference Include="..\..\MAF.Geo.Domain.Service\MAF.Geo.Domain.Service.csproj" />
     <ProjectReference Include="..\MAF.Geo.Domain.Model\MAF.Geo.Domain.Model.csproj" />
     <ProjectReference Include="..\MAF.Geo.Domain.Service\MAF.Geo.Domain.Service.csproj" />
   </ItemGroup>

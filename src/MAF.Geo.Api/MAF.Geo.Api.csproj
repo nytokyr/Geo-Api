@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MAF.Geo.Domain.Model\MAF.Geo.Domain.Model.csproj" />
-    <ProjectReference Include="..\..\MAF.Geo.Domain.Service\MAF.Geo.Domain.Service.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\MAF.Geo.Domain.Service\MAF.Geo.Domain.Service.csproj" />
   </ItemGroup>
 
 

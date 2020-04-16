@@ -22,7 +22,7 @@
             input: input,
             fetch: function (text, update) {
                 text = text.toLowerCase();
-                // you can also use AJAX requests instead of preloaded data
+                // use AJAX requests
                 fetch('/api/v1/pays/1/Villes?autoComplete=' + text)
                     .then(function (response) { return response.json() })
                     .then(function (json) { console.log(json) })

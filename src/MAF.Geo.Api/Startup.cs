@@ -1,3 +1,4 @@
+using AutoMapper;
 using MAF.Geo.Api.Extensions;
 using MAF.Geo.Api.Modules;
 using Microsoft.AspNetCore.Builder;
@@ -22,7 +23,9 @@ namespace MAF.Geo.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .ResolveDomainService()
+                .AddAutoMapper(typeof(Startup))
+                .AddPersistence(Configuration)
+                .AddDomainService()
                 .AddVersioning()
                 .AddSwagger()
                 .AddControllers();

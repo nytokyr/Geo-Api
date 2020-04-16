@@ -1,15 +1,11 @@
-﻿using MAF.Geo.Domain.Service.Ville;
+﻿using MAF.Geo.Domain.Service;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MAF.Geo.Api.Modules
 {
     public static class DomainServiceResolverExtensions
     {
-        public static IServiceCollection ResolveDomainService(this IServiceCollection services)
+        public static IServiceCollection AddDomainService(this IServiceCollection services)
         {
             services.AddScoped<IVilleService, VilleService>();
 

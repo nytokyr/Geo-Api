@@ -1,9 +1,11 @@
-﻿using MAF.Geo.Api.Dto;
-using MAF.Geo.Domain.Service.Ville;
+﻿using AutoMapper;
+using MAF.Geo.Api.Dto;
+using MAF.Geo.Domain.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MAF.Geo.Api.Controllers.v1
 {
@@ -13,27 +15,23 @@ namespace MAF.Geo.Api.Controllers.v1
     public class VillesController : ControllerBase
     {
         private readonly IVilleService _villeService;
+        private readonly IMapper _mapper;
         private readonly ILogger<VillesController> _logger;
 
-        public VillesController(IVilleService villeService, ILogger<VillesController> logger)
+        public VillesController(IVilleService villeService, IMapper mapper, ILogger<VillesController> logger)
         {
             _villeService = villeService;
+            _mapper = mapper;
             _logger = logger;
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<List<VilleDto>> Search(int paysId, string codePostal, string codeInsee, string autoComplete)
+        public async Task<ActionResult<List<VilleDto>>> Search(int paysId, string codePostal, string codeInsee, string autoComplete)
         {
-            var result = new List<VilleDto>()
-            {
-                new VilleDto
-                {
-                    CodePostal = "94230",
-                    NomVille = "Cachan"
-                }
-            };
+
+            var result = _mapper.Map<List<VilleDto>>(await _villeService.GetVillesByAutocomplete(autoComplete));
 
             return Ok(result);
         }

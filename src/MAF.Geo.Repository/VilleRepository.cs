@@ -1,4 +1,4 @@
-﻿using MAF.Geo.Domain.Service.Ville;
+﻿using MAF.Geo.Domain.Service;
 
 namespace MAF.Geo.Repository
 {

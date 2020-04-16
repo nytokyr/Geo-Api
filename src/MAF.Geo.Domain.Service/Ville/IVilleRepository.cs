@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MAF.Geo.Domain.Service.Ville
+namespace MAF.Geo.Domain.Service
 {
     public interface IVilleRepository
     {

@@ -57,10 +57,17 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="DataScripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Pays.sql" />
     <Build Include="Tables\Risques.sql" />
     <Build Include="Tables\Villes.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataScripts\seedPays.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

@@ -31,7 +31,23 @@ namespace MAF.Geo.Api.Controllers.v1
         public async Task<ActionResult<List<VilleDto>>> Search(int paysId, string codePostal, string codeInsee, string autoComplete)
         {
 
-            var result = _mapper.Map<List<VilleDto>>(await _villeService.GetVillesByAutocomplete(paysId,autoComplete));
+            var result = _mapper.Map<List<VilleDto>>(await _villeService.GetVillesByAutocomplete(paysId, autoComplete));
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("autocomplete")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<List<VilleDto>>> AutoComplete(int paysId, string filter)
+        {
+            var searchResult = await _villeService.GetVillesByAutocomplete(paysId, filter);
+
+            if (searchResult.Count == 0)
+                return NotFound("Ville not found");
+
+            var result = _mapper.Map<List<VilleDto>>(searchResult);
 
             return Ok(result);
         }

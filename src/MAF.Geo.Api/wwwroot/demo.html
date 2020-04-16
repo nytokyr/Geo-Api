@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <script src="https://polyfill.io/v3/polyfill.js?features=es6%2Cfetch"></script>
+    <script src="https://kraaden.github.io/autocomplete/autocomplete.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://kraaden.github.io/autocomplete/autocomplete.css">
+</head>
+<body>
+    <input id="country" type="text" />
+    <script type="text/javascript">
+        var countries = [
+            { label: 'United Kingdom', value: 'UK' },
+            { label: 'United States', value: 'US' }
+        ];
+
+        var input = document.getElementById("country");
+
+        autocomplete({
+            input: input,
+            fetch: function (text, update) {
+                text = text.toLowerCase();
+                // you can also use AJAX requests instead of preloaded data
+                fetch('/api/v1/pays/1/Villes?autoComplete=' + text)
+                    .then(function (response) { return response.json() })
+                    .then(function (json) { console.log(json) })
+                var suggestions = countries.filter(function (n) { return n.label.toLowerCase().startsWith(text) })
+                update(suggestions);
+            },
+            onSelect: function (item) {
+                input.value = item.label;
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -19,5 +19,9 @@
     <Folder Include="Modules\Mapper\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\demo.html" />
+  </ItemGroup>
+
 
 </Project>

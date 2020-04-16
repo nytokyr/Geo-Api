@@ -1,5 +1,6 @@
 ﻿using MAF.Geo.Api.Dto;
 using MAF.Geo.Domain.Service.Ville;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace MAF.Geo.Api.Controllers.v1
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<List<VilleDto>> Search(int paysId, string codePostal, string codeInsee, string autoComplete)
         {
             var result = new List<VilleDto>()
@@ -32,7 +35,7 @@ namespace MAF.Geo.Api.Controllers.v1
                 }
             };
 
-            return result;
+            return Ok(result);
         }
 
 

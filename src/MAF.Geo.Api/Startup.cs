@@ -1,18 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MAF.Geo.Api.Extensions;
 using MAF.Geo.Api.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace MAF.Geo.Api
 {
@@ -46,6 +39,7 @@ namespace MAF.Geo.Api
             app.UseHttpsRedirection()
                 .UseRouting()
                 .UseVersionedSwagger(provider, this.Configuration)
+                .UseStaticFiles()
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
                 {

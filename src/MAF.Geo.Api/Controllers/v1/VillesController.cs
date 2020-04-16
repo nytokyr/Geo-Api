@@ -31,7 +31,7 @@ namespace MAF.Geo.Api.Controllers.v1
         public async Task<ActionResult<List<VilleDto>>> Search(int paysId, string codePostal, string codeInsee, string autoComplete)
         {
 
-            var result = _mapper.Map<List<VilleDto>>(await _villeService.GetVillesByAutocomplete(autoComplete));
+            var result = _mapper.Map<List<VilleDto>>(await _villeService.GetVillesByAutocomplete(paysId,autoComplete));
 
             return Ok(result);
         }

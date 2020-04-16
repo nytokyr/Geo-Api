@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Risques]
 (
-	[RisquesId] INT NOT NULL PRIMARY KEY, 
+	[RisqueId] INT NOT NULL PRIMARY KEY IDENTITY, 
     [Libelle] NVARCHAR(MAX) NOT NULL, 
     [DateUpdate] DATETIME2 NULL
 )

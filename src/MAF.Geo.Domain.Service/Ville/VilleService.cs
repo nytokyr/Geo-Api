@@ -8,17 +8,15 @@ namespace MAF.Geo.Domain.Service
 {
     public class VilleService : IVilleService
     {
-        public Task<ReadOnlyCollection<Ville>> GetVillesByAutocomplete(string autocomplete)
-        {
-            var result = new List<Ville>
-            {
-                new Ville{VilleId = 1},
-                new Ville{VilleId = 2},
-                new Ville{VilleId = 3},
-                new Ville{VilleId = 4},
-            };
+        private readonly IVilleRepository _villeRepository;
 
-            return Task.FromResult(result.AsReadOnly());
+        public VilleService(IVilleRepository villeRepository)
+        {
+            _villeRepository = villeRepository;
+        }
+        public async Task<ReadOnlyCollection<Ville>> GetVillesByAutocomplete(int paysId, string autocomplete)
+        {
+            return new ReadOnlyCollection<Ville>(await _villeRepository.GetVillesByAutocomplete(paysId, autocomplete));
         }
     }
 }

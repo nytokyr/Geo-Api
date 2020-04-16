@@ -63,9 +63,15 @@
     <Build Include="Tables\Pays.sql" />
     <Build Include="Tables\Risques.sql" />
     <Build Include="Tables\Villes.sql" />
+    <Build Include="Tables\RegionAdministratives.sql" />
+    <Build Include="Tables\Departement.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataScripts\seedPays.sql" />
+    <None Include="DataScripts\seedRisques.sql" />
+    <None Include="DataScripts\seedDepartement.sql" />
+    <None Include="DataScripts\seedRegionAdministrative.sql" />
+    <None Include="DataScripts\seedVilles.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

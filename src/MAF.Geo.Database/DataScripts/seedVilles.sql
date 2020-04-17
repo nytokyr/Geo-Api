@@ -1,7 +1,4 @@
 ﻿
-SET IDENTITY_INSERT Villes ON
-GO
-
 MERGE INTO Villes AS Target
 USING (VALUES
   (1, null,null,1,1, N'01053' , N'01000', N'Bourg-en-Bresse', N'BOURG-EN-BRESSE',46.200000,5.216667),
@@ -13,11 +10,11 @@ USING (VALUES
 AS Source (PaysId
            ,RegionAdministrativeId
            ,DepartementId
-           ,RisquesId
+           ,RisqueId
            ,NiveauSismiciteId
            ,CodeInsee
            ,CodePostal
-           ,Ville
+           ,NomVille
            ,SimpleVille
            ,Latitude
            ,Longitude)
@@ -29,10 +26,10 @@ WHEN MATCHED THEN
     UPDATE SET 
            RegionAdministrativeId = Source.RegionAdministrativeId
            ,DepartementId = Source.DepartementId
-           ,RisquesId = Source.RisquesId
+           ,RisqueId = Source.RisqueId
            ,NiveauSismiciteId = Source.NiveauSismiciteId
            ,CodeInsee = Source.CodeInsee        
-           ,Ville = Source.Ville
+           ,NomVille = Source.NomVille
            ,Latitude = Source.Latitude
            ,Longitude = Source.Longitude
 -- insert new rows
@@ -40,11 +37,11 @@ WHEN NOT MATCHED BY TARGET THEN
  INSERT     (PaysId
            ,RegionAdministrativeId
            ,DepartementId
-           ,RisquesId
+           ,RisqueId
            ,NiveauSismiciteId
            ,CodeInsee
            ,CodePostal
-           ,Ville
+           ,NomVille
            ,SimpleVille
            ,Latitude
            ,Longitude)
@@ -52,15 +49,13 @@ WHEN NOT MATCHED BY TARGET THEN
            (PaysId
            ,RegionAdministrativeId
            ,DepartementId
-           ,RisquesId
+           ,RisqueId
            ,NiveauSismiciteId
            ,CodeInsee
            ,CodePostal
-           ,Ville
+           ,NomVille
            ,SimpleVille
            ,Latitude
            ,Longitude);
 GO
 
-SET IDENTITY_INSERT Villes OFF
-GO

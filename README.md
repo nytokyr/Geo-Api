@@ -2,19 +2,30 @@
 ----
  Description ....
 
-* **Methods:**
+* **Endpoints:**
 
   `GET`
   /api/v1/pays/{paysId}/Villes
-*  **URL Params**
+  -  **URL Params**
 
-   **Required:**
+      **Required:**
  
-   `paysId=[integer]`
+       `paysId=[integer]`
 
-   **Optional : **
-   `codePostal=[string]`
-   `codeInsee=[string]`
+     **Optional:**
+       `codePostal=[string]`
+       `codeInsee=[string]`
+       `filter=[string]`
+   
+   `GET`
+  /api/v1/pays/{paysId}/Villes/autocomplete
+
+  -  **URL Params**
+
+     **Required:**
+ 
+        `paysId=[integer]`
+        `filter=[string]`
 
 * **Success Response:**
 
@@ -43,7 +54,7 @@
     "niveauSismiciteId": 1,
     "codeInsee": "01344",
     "codePostal": "01000",
-    "nomVille": "Saint-Denis-lès-Bourg",
+    "nomVille": "Saint-Denis-lÃ¨s-Bourg",
     "simpleVille": "SAINT-DENIS-LES-BOURG",
     "latitude": 46.202056,
     "longitude": 5.190635
@@ -65,3 +76,6 @@
             console.log(json);           
         })
   ```
+
+* **Demo on localhost:**
+  Run `https://localhost:44354/demo.html`

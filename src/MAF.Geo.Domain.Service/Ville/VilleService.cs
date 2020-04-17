@@ -1,4 +1,5 @@
 ﻿using MAF.Geo.Domain.Model.RefMaf;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,11 +16,21 @@ namespace MAF.Geo.Domain.Service
             _villeRepository = villeRepository;
         }
 
-        public Task<ReadOnlyCollection<Ville>> GetVillesByAutocomplete(QueryVille query) =>
-             _villeRepository.GetVillesByAutocomplete(query!.PaysId, query.AutoComplete);
-
+        public Task<ReadOnlyCollection<Ville>> GetVillesByAutocomplete(QueryVille query)
+        {
+            if (query == null)
+            {
+                throw new ArgumentNullException(nameof(query));
+            }
+            return _villeRepository.GetVillesByAutocomplete(query!.PaysId, query.AutoComplete);
+        }
         public Task<ReadOnlyCollection<Ville>> SearchVille(QueryVille query)
         {
+            if (query == null)
+            {
+                throw new ArgumentNullException(nameof(query));
+            }
+
             if (!string.IsNullOrEmpty(query.CodeInsee))
                 return _villeRepository.SearchVilleByCodeInsee(query);
             if (!string.IsNullOrEmpty(query.CodePostal))

@@ -1,8 +1,8 @@
 ﻿//When document ready
 document.addEventListener('DOMContentLoaded', function () {
     loadAutoComplete();
-    document.getElementById("codePostal").onchange = searchByCodePostal;
-  //  document.getElementById("codeInsee").onchange = searchByCodeInsee;
+    document.getElementById("codePostal").onkeyup = searchByCodePostal;
+    //  document.getElementById("codeInsee").onchange = searchByCodeInsee;
 }, false);
 
 function loadAutoComplete() {
@@ -25,7 +25,7 @@ function loadAutoComplete() {
                             label: ville.codePostal + " - " + ville.nomVille,
                             ville: ville.nomVille,
                             codePostal: ville.codePostal,
-                            codeInsee : ville.codeInsee
+                            codeInsee: ville.codeInsee
                         };//mapping
                         return suggestion;
                     })
@@ -42,12 +42,15 @@ function loadAutoComplete() {
 
 function searchByCodePostal(event) {
     var pays = document.getElementById("pays");
-    console.log(event.target.value);
+    var consoleArea = document.getElementById("consoleArea");
 
     fetch('/api/v1/pays/' + pays.value + '/Villes?codePostal=' + event.target.value)
         .then(function (response) { return response.json() })
         .then(function (json) {
-            console.log(json);
-           
+            var pretty = JSON.stringify(json, undefined, 4);
+            consoleArea.value = pretty;
+        })
+        .catch(function (error) {
+            consoleArea.value = "Empty";
         })
 }

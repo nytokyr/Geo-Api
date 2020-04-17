@@ -26,5 +26,9 @@
     <None Include="wwwroot\demo.html" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+
 
 </Project>

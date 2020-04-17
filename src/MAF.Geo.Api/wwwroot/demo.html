@@ -8,28 +8,50 @@
     <script src="https://kraaden.github.io/autocomplete/autocomplete.js"></script>
     <script src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="https://kraaden.github.io/autocomplete/autocomplete.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <select id="pays">
-        <option value="1">France</option>
-        <option value="2">Belgique</option>
-    </select>
-    <h1>Autocomplete</h1>
-    <label>Ville ou code postal: </label><input id="villeForAutocomplete" type="text" />
+    <section id="cover">
+        <div id="cover-caption">
+            <div id="container" class="container">
+                <div class="row">
+                    <div class="col-sm-10 offset-sm-1 text-center">
+                        <h1 class="display-3">Test Geo API</h1>
+                        <div class="info-form">
+                            <form action="" class="justify-content-center">
+                                <div class="form-group">
+                                    <label>Pays</label>
+                                    <select id="pays" class="form-control">
+                                        <option value="1">France</option>
+                                        <option value="2">Belgique</option>
+                                    </select>
+                                </div>
+                              
+                                <div class="form-group">
+                                    <label>Ville ou code postal: </label>
+                                    <input id="villeForAutocomplete" type="text" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Code postal :</label>
+                                    <input id="codePostal" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Code INSEE :</label>
+                                    <input id="codeInsee" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Output</label>
+                                    <textarea id="consoleArea" readonly cols=50 rows=10 class="form-control"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <br>
 
-    <h1>Recherche par code postal ou INSEE</h1>
-    <div>
-        <label>Code postal :</label>
-        <input id="codePostal" />
-    </div>
-    <div>
-        <label>Code INSEE :</label>
-        <input id="codeInsee" />
-    </div>
-    <div>
-        <label>Ville :</label>
-        <input id="ville" />
-    </div>
-
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

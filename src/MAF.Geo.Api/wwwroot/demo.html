@@ -6,6 +6,7 @@
     <title>JS Bin</title>
     <script src="https://polyfill.io/v3/polyfill.js?features=es6%2Cfetch"></script>
     <script src="https://kraaden.github.io/autocomplete/autocomplete.js"></script>
+    <script src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="https://kraaden.github.io/autocomplete/autocomplete.css">
 </head>
 <body>
@@ -14,37 +15,21 @@
         <option value="2">Belgique</option>
     </select>
     <h1>Autocomplete</h1>
-    <input id="country" type="text" />
-    <script type="text/javascript">
-        var countries = [
-            { label: 'United Kingdom', value: 'UK' },
-            { label: 'United States', value: 'US' }
-        ];
+    <label>Ville ou code postal: </label><input id="villeForAutocomplete" type="text" />
 
-        var input = document.getElementById("country");
-        var pays = document.getElementById("pays");
+    <h1>Recherche par code postal ou INSEE</h1>
+    <div>
+        <label>Code postal :</label>
+        <input id="codePostal" />
+    </div>
+    <div>
+        <label>Code INSEE :</label>
+        <input id="codeInsee" />
+    </div>
+    <div>
+        <label>Ville :</label>
+        <input id="ville" />
+    </div>
 
-        autocomplete({
-            input: input,
-            fetch: function (text, update) {
-                text = text.toLowerCase();
-                // use AJAX requests
-                fetch('/api/v1/pays/' + pays.value + '/Villes/autoComplete?filter=' + text)
-                    .then(function (response) { return response.json() })
-                    .then(function (json) {
-                        console.log(json);
-                        var suggestions = json.map(function (ville) {
-                            var suggestion = { label: ville.nomVille, value: ville.nomVille };//mapping
-                            return suggestion;
-                        })
-                        update(suggestions);
-                    })
-            },
-            onSelect: function (item) {
-                input.value = item.value;
-            }
-        });
-
-    </script>
 </body>
 </html>

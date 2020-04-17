@@ -4,8 +4,8 @@
 
 * **Endpoints:**
 
-  `GET`
-  /api/v1/pays/{paysId}/Villes
+  `GET`  
+  /api/v1/pays/{paysId}/Villes?
   -  **URL Params**
 
       **Required:**
@@ -17,8 +17,8 @@
        `codeInsee=[string]`
        `filter=[string]`
    
-   `GET`
-  /api/v1/pays/{paysId}/Villes/autocomplete
+   `GET` 
+  /api/v1/pays/{paysId}/Villes/autocomplete?
 
   -  **URL Params**
 

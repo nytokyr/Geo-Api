@@ -9,6 +9,11 @@
     <link rel="stylesheet" type="text/css" href="https://kraaden.github.io/autocomplete/autocomplete.css">
 </head>
 <body>
+    <select id="pays">
+        <option value="1">France</option>
+        <option value="2">Belgique</option>
+    </select>
+    <h1>Autocomplete</h1>
     <input id="country" type="text" />
     <script type="text/javascript">
         var countries = [
@@ -17,20 +22,26 @@
         ];
 
         var input = document.getElementById("country");
+        var pays = document.getElementById("pays");
 
         autocomplete({
             input: input,
             fetch: function (text, update) {
                 text = text.toLowerCase();
                 // use AJAX requests
-                fetch('/api/v1/pays/1/Villes?autoComplete=' + text)
+                fetch('/api/v1/pays/' + pays.value + '/Villes/autoComplete?filter=' + text)
                     .then(function (response) { return response.json() })
-                    .then(function (json) { console.log(json) })
-                var suggestions = countries.filter(function (n) { return n.label.toLowerCase().startsWith(text) })
-                update(suggestions);
+                    .then(function (json) {
+                        console.log(json);
+                        var suggestions = json.map(function (ville) {
+                            var suggestion = { label: ville.nomVille, value: ville.nomVille };//mapping
+                            return suggestion;
+                        })
+                        update(suggestions);
+                    })
             },
             onSelect: function (item) {
-                input.value = item.label;
+                input.value = item.value;
             }
         });
 

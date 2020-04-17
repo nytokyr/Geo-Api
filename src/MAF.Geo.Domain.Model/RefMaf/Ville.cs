@@ -12,7 +12,7 @@
         public string CodePostal { get; set; }
         public string NomVille { get; set; }
         public string SimpleVille { get; set; }
-        public float? Latitude { get; set; }
-        public float? Longitude { get; set; }
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; }
     }
 }

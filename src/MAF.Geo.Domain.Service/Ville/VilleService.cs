@@ -14,9 +14,18 @@ namespace MAF.Geo.Domain.Service
         {
             _villeRepository = villeRepository;
         }
-        public async Task<ReadOnlyCollection<Ville>> GetVillesByAutocomplete(int paysId, string autocomplete)
+
+        public Task<ReadOnlyCollection<Ville>> GetVillesByAutocomplete(QueryVille query) =>
+             _villeRepository.GetVillesByAutocomplete(query!.PaysId, query.AutoComplete);
+
+        public Task<ReadOnlyCollection<Ville>> SearchVille(QueryVille query)
         {
-            return new ReadOnlyCollection<Ville>(await _villeRepository.GetVillesByAutocomplete(paysId, autocomplete));
+            if (!string.IsNullOrEmpty(query.CodeInsee))
+                return _villeRepository.SearchVilleByCodeInsee(query);
+            if (!string.IsNullOrEmpty(query.CodePostal))
+                return _villeRepository.SearchVilleBycodePostal(query);
+
+            return Task.FromResult(new ReadOnlyCollection<Ville>(new List<Ville>()));
         }
     }
 }

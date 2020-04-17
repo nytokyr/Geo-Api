@@ -28,12 +28,15 @@ namespace MAF.Geo.Api.Controllers.v1
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<List<VilleDto>>> Search(int paysId, string codePostal, string codeInsee, string autoComplete)
+        public async Task<ActionResult<List<VilleDto>>> Search(int paysId, string codePostal, string codeInsee)
         {
+            QueryVille query = QueryVille.Create(paysId).WithCodeInsee(codeInsee).WithCodePostal(codePostal);
+            var searchResult = _mapper.Map<List<VilleDto>>(await _villeService.SearchVille(query).ConfigureAwait(false));
 
-            var result = _mapper.Map<List<VilleDto>>(await _villeService.GetVillesByAutocomplete(paysId, autoComplete));
+            if (searchResult.Count == 0)
+                return NotFound("Items not found");
 
-            return Ok(result);
+            return Ok(_mapper.Map<List<VilleDto>>(searchResult));
         }
 
         [HttpGet]
@@ -42,14 +45,13 @@ namespace MAF.Geo.Api.Controllers.v1
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<VilleDto>>> AutoComplete(int paysId, string filter)
         {
-            var searchResult = await _villeService.GetVillesByAutocomplete(paysId, filter);
+            QueryVille query = QueryVille.Create(paysId).WithAutoComplete(filter);
+            var searchResult = _mapper.Map<List<VilleDto>>(await _villeService.GetVillesByAutocomplete(query).ConfigureAwait(false));
 
             if (searchResult.Count == 0)
-                return NotFound("Ville not found");
+                return NotFound("Items not found");
 
-            var result = _mapper.Map<List<VilleDto>>(searchResult);
-
-            return Ok(result);
+            return Ok(_mapper.Map<List<VilleDto>>(searchResult));
         }
 
 

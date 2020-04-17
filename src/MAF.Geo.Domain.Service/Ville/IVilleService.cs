@@ -6,6 +6,8 @@ namespace MAF.Geo.Domain.Service
 {
     public interface IVilleService
     {
-        Task<ReadOnlyCollection<Ville>> GetVillesByAutocomplete(int paysId, string autocomplete);
+        Task<ReadOnlyCollection<Ville>> GetVillesByAutocomplete(QueryVille query);
+        Task<ReadOnlyCollection<Ville>> SearchVille(QueryVille query);
+
     }
 }

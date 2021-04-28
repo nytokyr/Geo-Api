@@ -27,5 +27,5 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2  
     - name: MSbuild
       run: msbuild /t:Build /p:Configuration=Release  
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+#    - name: Test
+#      run: dotnet test --no-restore --verbosity normal

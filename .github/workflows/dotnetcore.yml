@@ -26,8 +26,6 @@ jobs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2  
     - name: MSbuild
-      run: msbuild
-    - name: Build    
-      run: dotnet build --configuration Release --no-restore
+      run: msbuild /t:Build /p:Configuration=Release  
     - name: Test
       run: dotnet test --no-restore --verbosity normal
